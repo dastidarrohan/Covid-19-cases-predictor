@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+{% extends 'coronaApp/base.html' %}
+
+{% block body_block %}
+<html>
+<style>
+    .hero__extra-content{
+      margin-top: 30px;
+      margin-bottom: 30px;
+      background-color: purple;
+    }
+    .content-container-content-container--text-column{
+      margin-bottom: 30px;
+    }
+    .entity-entity-paragraphs-item-paragraphs-item-text-passage-section-padding-top-one-padding-bottom-one{
+      margin-left: 8%;
+    }
+    .br{
+      display: block;
+      margin-bottom: 500px;
+    }
+</style>
+
+<body style="background-color: rgb(31, 10, 13);">
+<article about="/covid-19-coronavirus-data-resources/global-tracker" class="node node--page node--full node--page--full" role="article" typeof="sioc:Item foaf:Document">
+ <header>
+  <span class="rdf-meta element-hidden" content="Coronavirus (COVID-19) Global Data Tracker | Tableau" property="dc:title">
+  </span>
+  <span class="rdf-meta element-hidden" content="0" datatype="xsd:integer" property="sioc:num_replies">
+  </span>
+ </header>
+ <div class="node__content">
+  <div class="paragraphs-items paragraphs-items-field-sections paragraphs-items-field-sections-full paragraphs-items-full">
+   <section class="hero hero--background entity entity-paragraphs-item paragraphs-item-special-hero text--centered">
+    <div id="">
+     <div class="hero__content" style="background-image: url(https://cdnl.tblsft.com/sites/default/files/hero-backgrounds/covid_viz_hero_2.png);">
+      <div class="hero__content-inner content-container 0">
+       <h1 class="hero__title">
+        <corona hero="">
+        </corona>
+       </h1>
+       <div class="hero__extra-content">
+        <h1 class="text--benton-medium" style="color: yellow;">
+         Coronavirus (COVID-19) Global Data Tracker
+        </h1>
+        <p>
+         <a class="link link--arrow text--negative" href="https://www.tableau.com/covid-19-coronavirus-data-resources">
+          GO TO COVID-19 DATA HUB
+         </a>
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section about="" class="entity entity-paragraphs-item paragraphs-item-text-passage section padding-bottom-none" typeof="">
+    <div class="content-container-content-container--text-column">
+     <div class="field field--name-field-content field--type-text-long field--label-hidden">
+      <p class="text--benton-book text--centered" style="color: white;">
+       This coronavirus tracker visualizes Johns Hopkins University data to help you stay on top of key COVID-19 metrics. You can use this dashboard to track global and US-specific case data, including totals, the spread of COVID-19, and outbreaks around the world. This dashboard will be updated daily.
+      </p>
+     </div>
+    </div>
+   </section>
+   <section about="" class="entity-entity-paragraphs-item-paragraphs-item-text-passage-section-padding-top-one-padding-bottom-one" typeof="">
+    <div class="content-container">
+     <div class="field field--name-field-content field--type-text-long field--label-hidden">
+      <!--########## BEGIN CONDITIONAL COVID VIZ ##########-->
+      <div id="vizContainer" style="min-height: 527px">
+      </div>
+      <script>
+       (function () {
+  // Legacy browsers can't do this
+  if (!document.addEventListener) {
+    return;
+  }
+
+  function initializeCovidViz() {
+    var vizDiv = document.getElementById('vizContainer');
+    var currentViz;
+    var covidVizzes = {
+      mobile: {
+        mql: window.matchMedia("(max-width: 639px)"),
+        url: 'https://public.tableau.com/views/CoronavirusCovid-19DailyIndicators-OptimizedforMobile/CoronavirusDailyIndicatorsDashboard?:display_count=y&:origin=viz_share_link'
+      },
+      desktop: {
+        mql: window.matchMedia("(min-width: 640px)"),
+        url: 'https://public.tableau.com/views/CoronavirusCovid-19DailyIndicators-OptimizedforDesktop/CoronavirusDailyIndicatorsDashboard?:display_count=y&:origin=viz_share_link'
+      }
+    };
+    var vizOptions = {
+      hideTabs: true
+    }
+
+    // Create a Public viz, dynamically.
+    function createViz(viz) {
+      // If a viz object exists, delete it.
+      if (currentViz) {
+        currentViz.dispose();
+      }
+
+      // Initialize the given viz.
+      currentViz = new tableau.Viz(vizDiv, viz.url, vizOptions);
+    }
+
+    // Handle media query changes
+    function onWidthChange(e) {
+      var isMobile = covidVizzes.mobile.mql.matches;
+      var isDesktop = covidVizzes.desktop.mql.matches;
+
+      if (isMobile) {
+        createViz(covidVizzes.mobile);
+      }
+      else if (isDesktop) {
+        createViz(covidVizzes.desktop);
+      }
+    }
+
+    // Listen for media query status changes. and bind to the onWidthChange function.
+    covidVizzes.mobile.mql.addListener(onWidthChange);
+    covidVizzes.desktop.mql.addListener(onWidthChange);
+
+    // Initialize something
+    onWidthChange(null);
+  }
+
+  // Performance enhancement: wait until DOM ready before initializing.
+  document.addEventListener('DOMContentLoaded', function () {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.onload = initializeCovidViz;
+    script.src = 'https://public.tableau.com/javascripts/api/tableau-2.4.0.min.js';
+    document.getElementsByTagName('head')[0].appendChild(script);
+  });
+})();
+</script>
+</div>
+</div>
+</section>
+</div>
+</div>
+</article>
+<span class="br"></span>
+
+</body>
+</html>
+{% endblock %}

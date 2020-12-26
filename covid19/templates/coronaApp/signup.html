@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <style>
+            #signup{
+                background-image: url("https://thumbs.dreamstime.com/b/blue-world-map-cream-handmade-paper-texture-background-35308659.jpg");
+                height: 2000px;
+                overflow: hidden;
+            }
+            body{
+                background-color: wheat;
+            }
+            form{
+                margin-left: 30px;
+                border: 1px solid ridge;
+                padding-left: 30px;
+                padding-top: 30px;
+                padding-bottom: 30px;
+                border-style: outset;
+            }
+            .myemailclass{
+                margin-left: 40px;
+            }
+            .myuserclass{
+                margin-top: 10px;
+                margin-left: 66px;
+            }
+            .mypassword1{
+                margin-left: 68px;
+            }
+            .mypassword2{
+                margin-left: 10px;
+            }
+            #submit{
+                margin-top: 20px;
+                width: 300px;
+                float: left;
+            }
+            #reset{
+                margin-top: 30px;
+                width: 300px;
+                margin-right: 1000px;
+            }
+            #logo{
+                width: 100px;
+                height: 50px;
+                margin-top: -45px;
+                margin-left: -20px;
+                background: wheat;
+                border-style: groove;
+            }
+            h4{
+                margin-top: -25px;
+                padding-left: 30px;
+                color: red;
+            }
+            #cov{
+                width: 30px;
+                height: 40px;
+            } 
+
+        </style>
+    </head>
+
+    <body>
+        <div id="signup">
+        <h1 style="color: white;"></h1>
+        {% block content %}
+        <br>
+        <form method="POST" id="form">
+            <div id="logo"><img src="{% static "media/covid19.png" %}" id="cov">
+            <h4>Sign up</h4>
+            </div>
+            {{form.as_p}}
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" value="Sign up" id="submit">
+            <input type="reset" class="btn btn-primary" value="Reset" id="reset">
+        </form>
+        <h2 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-left: 25px;">Already an existing user?<a href="{% url 'coronaApp:login' %}" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Log in</a></h2>
+        {% endblock %}
+        </div>
+    </body>
+</html>

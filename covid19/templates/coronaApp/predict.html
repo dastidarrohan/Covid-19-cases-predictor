@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{% extends 'coronaApp/base.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<style>
+    #btn{
+        margin-left: 80px;
+    }
+    #form{
+        margin-left: 20px;
+    }
+    #div{
+        display: none;
+        width: 80%;
+        margin-left: 40px;
+        border-style: groove;
+        border-radius: 20px;
+        margin-bottom: 200px;
+        margin-top: 50px;
+    }
+    #div1{
+        border-style: ridge;
+        padding-left: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 40px;
+
+    }
+    .myuserdate{
+        padding-left: 20px;
+    }
+    .br{
+        display: block;
+        margin-bottom: 700px;
+    }
+    img{
+        /* margin-left: 50px; */
+    }
+</style>
+<div class="jumbotron" style="background-color:blueviolet;" id="div1">
+    <h1 style="color: red; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Predict results</h1>
+    <h2 style="color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Enter a date to get the results.Please choose a date post 22nd Jan, 2020,as the first Covid-19 case was reported at that date.</h2>
+</div>
+<br>
+<br>
+<form method="POST" id="form">
+    {{form.as_p}}
+    {%csrf_token%}
+    <br>
+    <input type="submit" onclick="toggle()" class="btn btn-success" value="Predict" id="btn">
+</form>
+<br><br><br>
+
+
+<div class="jumbotron" id="div" style="background-color: tomato;">
+{% if request.method == "POST"%}
+    <style>
+        #div{
+            display: block;
+        }
+    </style>
+    <p style="font-family: 'Courier New', Courier, monospace; color: white;">{{z}}</p>
+    <p style="font-family: 'Courier New', Courier, monospace; color: white;">{{y_pred1}}</p>
+{% endif %}
+</div>
+
+<div class="jumbotron" id="div" style="background-color: teal;">
+    {% if request.method == "POST"%}
+        <style>
+            #div{
+                display: block;
+            }
+        </style>
+        <p style="font-family: 'Courier New', Courier, monospace; color: white;">{{y_pred_deaths1}}</p>
+    {% endif %}
+</div>
+
+<div class="jumbotron" id="div" style="background-color: blueviolet;">
+    {% if request.method == "POST" %}
+        <style>
+            #div{
+                display: block;
+            }
+        </style>
+        <p style="font-family: 'Courier New', Courier, monospace; color: white;">{{y_pred_active1}}</p>
+    {% endif %}
+</div>
+
+<div class="jumbotron" id="div" style="background-color: green;">
+    {% if request.method == "POST"%}
+        <style>
+            #div{
+                display: block;
+            }
+        </style>
+        <p style="font-family: 'Courier New', Courier, monospace; color: white;">{{y_pred_recovered1}}</p>
+    {% endif %}
+</div>
+<div>
+    {% if request.method == "POST"%}
+        <img src="data:image/png;base64,{{plot}}" alt="" height="500", width="1400">
+    {% endif %}
+</div>
+<!-- <div>
+    {% if request.method == "POST"%}
+        <img src="data:image/png;base64,{{plot2}}" alt="" height="500", width="1400">
+    {% endif %}
+</div> -->
+<span class="br"></span>
+
+{% endblock %}

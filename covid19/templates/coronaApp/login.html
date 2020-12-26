@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <style>
+            #login{
+                background-image: url("https://thumbs.dreamstime.com/b/blue-world-map-cream-handmade-paper-texture-background-35308659.jpg");
+                height: 2000px;
+                overflow: hidden;            
+            }
+            body{
+                background-color: wheat;
+            }
+            #form{
+                margin-left: 30px;
+                border: 1px solid ridge;
+                padding-left: 30px;
+                padding-bottom: 30px;
+                border-style:outset;
+                height: 250px;
+            }
+            h3{
+                margin-left: 30px;
+                margin-bottom: 40px;
+                margin-top: 10px;
+            } 
+            #logo{
+                width: 100px;
+                height: 50px;
+                margin-top: -20px;
+                margin-bottom: 40px;
+                margin-left: -20px;
+                background: wheat;
+                border-style: groove;
+            }
+            h4{
+                margin-top: -25px;
+                padding-left: 30px;
+                color: red;
+            }
+            #cov{
+                width: 30px;
+                height: 40px;
+            } 
+            #Log{
+                margin-top: 30px;
+                margin-right: 20px;
+            }
+            #reset{
+                margin-top: 30px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="login">
+        <h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Log in to your account</h1>
+        <form method="POST" id="form">
+            <div id="logo"><img src="{% static "media/covid19.png" %}" id="cov">
+                <h4>Log in</h4>
+            </div>
+            {{form.as_p}}
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" value="Login" id="Log">
+            <input type="reset" class="btn btn-primary" value="Reset" id="reset">
+        </form>
+        </div>
+    </body>
+</html>

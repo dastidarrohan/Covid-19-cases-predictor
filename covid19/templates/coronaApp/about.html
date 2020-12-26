@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends 'coronaApp/base.html' %}
+{% block body_block %}
+<style>
+    .br{
+        display: block;
+        margin-bottom: 500px;
+    }
+    h1{
+        margin-left: 20px;
+    }
+    p{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+</style>
+
+<div class="jumbotron">
+<h1 style="color: purple; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">About this website</h1>
+<p style="font-size: 20px; color: purple; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">This website is all about visualization and prediction of Covid-19 cases.
+    It lets you forecast the Covid-19 cases that is dormant in the world, such as total
+    number of confirmed cases, deaths, recovery and the rate of all these parameters.
+    This website makes use of the John Hopkins University API to fetch the current status.
+    It also lets you analyse yourself and gives you an estimation of the likelihood of you
+    being infected with the virus.(Discretion: Even though this website makes use of advanced machine learning
+    algorithms to give you the results, still, it cannot replace a real doctor.So don't freak out and
+    seeking the help of a medical expert is strongly advised before contemplating any self-diagnosis.)
+</p>
+</div>
+<span class="br"></span>
+
+{% endblock %}

@@ -1,0 +1,275 @@
+<!DOCTYPE html> 
+{% extends 'coronaApp/base.html' %}
+
+{% block body_block %}
+<style>
+    p{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    ul{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .br{
+        display: block;
+        margin-bottom: 700px;
+    }
+    #div{
+        overflow-y: scroll;
+        height: 500px;
+        margin-left: 50px;
+        margin-right: 50px;
+        border: 10px solid green;
+    }
+    #div2{
+        width: 800px;
+        height: 350px;
+        margin-left: 50px;
+        border: 2px solid grey;
+    }
+    #butt1{
+        margin-left: 50px;
+        width: 400px; 
+    }
+    #div3{
+        width: 800px;
+        height: 300px;
+        margin-left: 50px;
+        border: 2px solid grey;
+    }
+    #butt2{
+        margin-left: 50px; 
+    }
+    #butt3{
+        margin-left: 50px; 
+    }
+    #butt4{
+        margin-left: 50px; 
+    }
+    button{
+        margin-left: 50px;
+        width: 400px;
+    }
+    #div4{
+        width: 800px;
+        height: 700px;
+        margin-left: 50px;
+        border: 2px solid grey;
+    }
+    #div5{
+        width: 800px;
+        height: 400px;
+        margin-left: 50px;
+        border: 2px solid grey;
+    }
+    #div6{
+        width: 800px;
+        height: 200px;
+        margin-left: 50px;
+        border: 2px solid grey;
+    }
+    #div7{
+        width: 800px;
+        height: 500px;
+        margin-left: 50px;
+        border: 2px solid grey;
+    }
+    #div8{
+        width: 800px;
+        height: 230px;
+        margin-left: 50px;
+        border: 2px solid grey;
+    }
+    #div9{
+        width: 1200px;
+        height: 800px;
+        margin-left: 50px;
+        border: 2px solid grey;
+    }
+    #div10{
+        width: 1200px;
+        height: 300px;
+        margin-left: 50px;
+        border: 2px solid grey;
+    }
+    #div11{
+        width: 1200px;
+        height: 300px;
+        margin-left: 50px;
+        border: 2px solid grey;
+    }
+    #div12{
+        width: 1200px;
+        height: 500px;
+        margin-left: 50px;
+        border: 2px solid grey;
+    }
+    #list{
+        padding-top: 20px;
+        padding-bottom: 50px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 20px;
+        color: purple;
+    }
+</style>
+<h2 style="color: purple; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-left: 20px;">Our interactive Coronavirus (COVID-19) Self-Checker helps you quickly find information about the new coronavirus and COVID-19, the disease it causes. Use our interactive tool to:
+</h2>
+
+<ul id="list">
+    <li>Check yourself for coronavirus symptoms.</li>
+    <li>Learn how to protect yourself and others from COVID-19.</li>
+    <li>Get coronavirus information important to parents and caregivers.</li>
+</ul>
+<div class="jumbotron" id="div" style="background-color: white;">
+  <div class="jumbotron" id="div2">
+    <p>Welcome to Our Coronavirus Self-Checker.</p>
+    <p>If you are experiencing a life-threatening emergency, such as severe shortness of breath or high fever, call 911.</p>
+    <p>This self-checker is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a medical professional for serious symptoms or emergencies.</p>
+    <p><button id="butt1" class="btn btn-primary" onclick="disp()">I Accept</button></p>
+  </div>
+  <div class="jumbotron" id="div3" hidden>
+    <p>What would you like to do?</p>
+    <p><button id="butt2" class="btn btn-primary" onclick="check()">Check my symptoms</button></p>
+    <p><button id="butt3" class="btn btn-primary" onclick="protect()">Protect myself against Covid-19</button></p>
+    <p><button id="butt4" class="btn btn-primary" onclick="info()">Get parent and caregiver information</button></p>
+  </div>
+  <div class="jumbotron" id="div4" hidden>
+    <p>Please check all that apply. Do you:</p>
+    <p><input type="checkbox">Wash your hands frequently for at least 20 seconds, using soap and water, or use a hand sanitizer with at least 60% alcohol?</p><br>
+    <p><input type="checkbox">Cough or sneeze into a tissue or your elbow, and throw away your tissue?</p><br>
+    <p><input type="checkbox">Avoid touching your eyes, nose or mouth with unwashed hands?</p><br>
+    <p><input type="checkbox">Avoid people who are sick, sneezing or coughing?</p><br>
+    <p><input type="checkbox">Stay home as much as possible, and reduce visitors?</p><br>
+    <p><input type="checkbox">Clean and disinfect objects and surfaces that people frequently touch?</p><br>
+    <p><input type="checkbox">Stay 6 feet away from people in public places and avoid people who appear sick?</p><br>
+    <p><button id="butt5" class="btn btn-primary" onclick="submit()">Submit</button>
+  </div>
+  <div class="jumbotron" id="div7" hidden>
+    <p>Do you have any of the following?</p>
+    <ul>
+        <p><li>Cough</li></p>
+        <p><li>Fever or chills</li></p>
+        <p><li>Shortness of breath or difficulty breathing</li></p>
+        <p><li>Muscle or body aches</li></p>
+        <p><li>Sore throat</li></p>
+        <p><li>New loss of taste or smell</li></p>
+        <p><li>Diarrhea</li></p>
+        <p><li>Headache</li></p>
+        <p><li>Nausea or vomiting</li></p>
+    </ul>
+    <p><button id="butt7" class="btn btn-primary" onclick="yes()">Yes</button></p>
+    <p><button id="butt8" class="btn btn-primary" onclick="yes()">No</button></p>
+  </div>
+  <div class="jumbotron" id="div8" hidden>
+    <p>Have you had close contact with someone diagnosed with COVID-19 or been notified that you may have been exposed to it?</p>
+    <p><button id="butt8" class="btn btn-primary" onclick="yes2()">Yes</button></p>
+    <p><button id="butt9" class="btn btn-primary" onclick="no()">No</button></p>
+  </div>
+  <div class="jumbotron" id="div9" hidden>
+    <p>Your answers indicate that you should call your health care provider and describe your symptoms and/or your contact with someone who’s been diagnosed.</p>
+    <p>Be sure to indicate if you:</p>
+    <ul>
+        <p><li>Are 65 or older.</li></p>
+        <p><li>Suffer from a chronic health problem, such as diabetes, heart disease, cancer or lung disease.</li></p>
+        <p><li>A health care or emergency worker who has been interacting with patients who may have COVID-19.</li></p>
+        <p><li>Are immunocompromised, such as people with HIV/AIDS and cancer.</li></p>
+        <p><li>Are pregnant, or had a baby within the last 2 weeks.</li></p>
+    </ul>
+    <p>Your doctor will determine next steps.</p>
+    <p>Most COVID-19 cases can be managed at home. Severe symptoms may require hospital treatment.</p>
+    <p>If you don’t have a provider and you live in Maryland or Washington, D.C., call Johns Hopkins Medicine at 443-997-9537 to get screened and, if needed, tested.</p>
+    <p>Learn more:</p>
+    <ul>
+        <p><li><a href="">What to Do if I Feel Sick?</a></li></p>
+        <p><li><a href="">I’ve Been Diagnosed with COVID-19. What Should I Expect?</a></li></p>
+        <p><li><a href="">What You Need to Know About the Coronavirus Test</a></li></p>
+    </ul>
+  </div>
+  <div class="jumbotron" id="div10" hidden>
+      <p>Your answers indicate you are at low risk for COVID-19 at this time. However, you should protect yourself and others from the spread of COVID-19.</p>
+      <p>Learn more:</p>
+      <ul>
+        <li><a href="">How Can I Protect Myself and Others?</a></li>
+        <li><a href="">Social and Physical Distancing and Self-Quarantine</a></li>
+        <li><a href="">Stressed About COVID-19? Here’s What Can Help</a></li>
+        <li><a href="">Practicing Wellness While You Stay at Home</a></li>
+      </ul>
+  </div>
+  <div class="jumbotron" id="div11" hidden>
+      <p>Are you taking care of someone diagnosed with COVID-19 or a respiratory illness?</p>
+      <button id="butt10" class="btn btn-primary" onclick="submit2()">No</button>
+      <button id="butt11" class="btn btn-primary" onclick="yes3()">Yes</button>
+  </div>
+  <div class="jumbotron" id="div12" hidden>
+      <p>Please check all that apply. Do you:</p>
+      <p><input type="checkbox">Wear a facemask or scarf to cover your nose and mouth when you are close to this person?</p><br>
+      <p><input type="checkbox">Clean counters, door knobs, phones and tablets frequently, using disinfectant cleaners or wipes?</p><br>
+      <p><input type="checkbox">Avoid sharing things like utensils and towels with the person who is ill?</p><br>
+      <p><input type="checkbox">Practice good hand hygiene and respiratory etiquette?</p><br>
+      <button id="butt12" class="btn btn-primary" onclick="submit2()">Submit</button>
+  </div>
+  <div class="jumbotron" id="div5" hidden>
+    <p>Based on your answers, there is more you can do to protect yourself and others from the new coronavirus and COVID-19. Review the information below.</p>
+    <p>It would also be a good idea to run errands and go to the grocery store during off-peak hours so you can avoid crowds.</p>
+    <p>Learn more:</p>
+    <ul>
+    <li><a href="">Coronavirus at a Glance</a></li>
+    <li><a href="">How Can I Protect Myself and Others?</a></li>
+    <li><a href="">Social and Physical Distancing and Self-Quarantine</a></li>
+    <li><a href="">Stressed About COVID-19? Here’s What Can Help</a></li>
+    </ul>
+  </div>
+  <div class="jumbotron" id="div6" hidden>
+    <p>Would you like to restart?</p>
+    <button id="butt6" class="btn btn-primary" onclick="restart()">Restart</button>
+  </div>
+</div>
+<script>
+    function disp(){
+      document.getElementById("div3").hidden = false;
+    }
+    function check(){
+      document.getElementById("div7").hidden = false;
+    }
+    function protect(){
+      document.getElementById("div4").hidden = false;
+    }
+    function submit(){
+        document.getElementById("div5").hidden = false;
+        document.getElementById("div6").hidden = false;
+    }
+    function restart(){
+        document.getElementById("div3").hidden = true;
+        document.getElementById("div4").hidden = true;
+        document.getElementById("div5").hidden = true;
+        document.getElementById("div6").hidden = true;
+        document.getElementById("div7").hidden = true;
+        document.getElementById("div8").hidden = true;
+        document.getElementById("div9").hidden = true;
+        document.getElementById("div10").hidden = true;
+        document.getElementById("div11").hidden = true;
+        document.getElementById("div12").hidden = true;    
+    }
+    function yes(){
+        document.getElementById("div8").hidden = false;
+    }
+    function yes2(){
+        document.getElementById("div9").hidden = false;
+        document.getElementById("div6").hidden = false;
+    }
+    function no(){
+        document.getElementById("div10").hidden = false;
+        document.getElementById("div6").hidden = false;
+    }
+    function yes3(){
+        document.getElementById("div12").hidden = false;
+    }
+    function submit2(){
+        document.getElementById("div5").hidden = false;
+        document.getElementById("div6").hidden = false;
+    }
+    function info(){
+        document.getElementById("div11").hidden = false;
+    }
+</script>
+<span class="br"></span>
+{% endblock %}
