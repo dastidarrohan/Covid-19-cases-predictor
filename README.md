@@ -1,8 +1,6 @@
 # Covid-19-cases-predictor
 A Django based web-development project integrated with Machine Learning, that helps forecast the total number of cases related to Covid-19, such as number of deaths, active cases, recovery cases, etc.
 
-GoCardless sample application
-
 Setup
 
 The first thing to do is to clone the repository:
