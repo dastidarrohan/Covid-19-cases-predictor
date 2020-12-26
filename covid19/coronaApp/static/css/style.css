@@ -1,0 +1,142 @@
+h1{
+    color: red;
+}
+.techfont{
+    font-family: 'Russo One', sans-serif;
+} 
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+:root {
+  --bg: #262626;
+  --box: #f2f4f3;
+  --page-text: #f2f4f3;
+  --box-text: #262626;
+  --shadow: #058ed9;
+  --confirmed: #058ed9;
+  --deaths: #e3170a;
+  --recovered: #3ec300;
+  
+}
+html {
+    font-size:32px;
+}
+body {
+  font-size: 1.2rem;
+  font-family: Lato;
+  background: var(--bg);
+  text-align:center;
+  color: var(--page-text);
+  
+}
+#covid {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  
+}
+h1 {
+  color: var(--confirmed);
+}
+p {
+  font-size: 1.4rem;
+  color: var(--recovered)
+}
+.box {
+  display:inline-grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1.2rem;
+  width: 80vw;;
+  
+}
+.stat-box {
+  line-height: 0.8rem;
+  color: var(--box-text);
+  background-color: var(--box);
+  padding: 0.2rem 0 0.4rem 0;
+  border-radius:12px;
+  box-shadow: 0px 0px 4px 0 var(--shadow) inset;
+}
+.stat-box h3 {
+  line-height:1.2;
+  margin: 2px 0;
+}
+span {
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height:1.2;
+  color: var(--confirmed);
+}
+.confirmed {
+  color: var(--confirmed);
+}
+.deaths {
+  color: var(--deaths);
+}
+.recovered {
+  color: var(--recovered);
+}
+.selector {
+  margin: 2rem 0;
+  text-align: center;
+}
+select {
+  
+  text-align: center;
+  padding: 0.8rem 0;
+  font-size:1.4rem;
+  color: var(--bg);
+  background-color: #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 2px 0px var(--deaths) inset
+}
+.footer {
+  margin-top: 4rem;
+}
+a {
+  text-decoration:none;
+  color: var(--deaths);
+}
+a:hover {
+  color: var(--confirmed);
+  text-shadow: 1px 1px;
+}
+.footer-logo {
+  background:var(--box);    
+  height: 100px;
+  width: auto;
+  padding: 5px;
+  border-radius: 6px;
+  box-shadow: 3px 3px 12px 2px;
+}
+/*Change to desktop   */
+@media only screen 
+  and (min-width: 1025px)
+  {
+  html {
+    font-size:14px;
+    line-height:1;
+   }
+  h1 {
+    line-height: 2.5;
+   }
+  p {
+  font-size: 1.8rem;
+  }  
+  .box {
+    grid-template-columns: repeat(6,1fr);
+    
+    width: 800px;
+  }
+   .stat-box {
+     grid-column: span 2; 
+  }
+   .stat-box:last-child:nth-child(3n+1) {
+      grid-column-end: 5;
+   }
+  select {
+      padding: 0.4rem 0;
+    }
+    .footer-logo {
+      height: 40px;
+    } 
+}
+
